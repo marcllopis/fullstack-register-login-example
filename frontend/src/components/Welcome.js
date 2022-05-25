@@ -1,0 +1,15 @@
+import { Link } from "react-router-dom";
+import '../App.css';
+
+const Welcome = () => (
+  <section className="welcome">
+    <h1>Welcome to Profilebook</h1>
+    <h3>Some short description</h3>
+    <div className="welcome-sign-log">
+      <Link to={"/register"}>Sign up for a free account</Link>
+      <Link to={"/login"}>Log in with existing account</Link>
+    </div>
+  </section>
+)
+
+export default Welcome;

@@ -1,0 +1,32 @@
+nav {
+  background: linear-gradient(#181899, #0095ff);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100vw;
+  height: 8vh;
+  padding: 2rem;
+  margin-bottom: 10rem;
+}
+
+nav>section {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+nav>section>* {
+  color: whitesmoke;
+  padding: 3rem;
+  text-decoration: none;
+}
+
+.logo {
+  height: 20vh;
+}
+
+.nav-header {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  width: 25rem;
+}
