@@ -1,20 +1,40 @@
 import React, { useContext } from "react";
 import Input from "./Input";
 import { Context } from "../context/Provider";
+import { Navigate } from 'react-router-dom';
 
 const Signup = () => {
   const context = useContext(Context);
 
-  const handleSubmit= async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    await fetch("http://localhost:5000/register", {
+    fetch("http://localhost:5000/register", {
       method: "POST",
       headers: new Headers({
         "Content-Type": "application/json",
       }),
       body: JSON.stringify({
-        newUser: Context.newUser,
+        email: context.newUser.email,
+        password: context.newUser.password,
+        name: context.newUser.name,
+        city: context.newUser.city,
+        age: context.newUser.age
       }),
+    })
+    .then((response) => {
+      // reset the state for registration
+      context.setNewUser({
+        email: "",
+        password: "",
+        name: "",
+        city: "",
+        age: "",
+      })
+      if(response.status === 201) {
+        return <Navigate to={"/login"} />
+      } else {
+        return <Navigate to={"/error"} />
+      }
     })
   }
 
@@ -28,7 +48,7 @@ const Signup = () => {
         required 
       />
       <Input 
-        inputType={"text"} 
+        inputType={"password"} 
         linked={context.newUser.password}
         action={(event) => context.handleInfo(event, "password")}
         display={"Your password..."} 
@@ -41,12 +61,18 @@ const Signup = () => {
         display={"Your name..."} 
       />
       <Input 
+        inputType={"text"} 
+        linked={context.newUser.city}
+        action={(event) => context.handleInfo(event, "city")}
+        display={"Your city..."} 
+      />
+      <Input 
         inputType={"number"}
         linked={context.newUser.age}
         action={(event) => context.handleInfo(event, "age")}
         display={"Your age..."} 
       />
-      <button>Register</button>
+      <button className="buttonify">Register</button>
     </form>
   )
 }

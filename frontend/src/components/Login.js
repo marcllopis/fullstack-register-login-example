@@ -16,7 +16,7 @@ const Login = () => (
       display={"Your password..."} 
       required 
     />
-    <button>Log in</button>
+    <button className="buttonify">Log in</button>
   </form>
 )
 

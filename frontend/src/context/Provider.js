@@ -9,6 +9,7 @@ const Provider = (props) => {
     email: "",
     password: "",
     name: "",
+    city: "",
     age: "",
   })
 
