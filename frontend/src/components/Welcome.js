@@ -6,8 +6,12 @@ const Welcome = () => (
     <h1>Welcome to Profilebook</h1>
     <h3>Some short description</h3>
     <div className="welcome-sign-log">
-      <Link to={"/register"}>Sign up for a free account</Link>
-      <Link to={"/login"}>Log in with existing account</Link>
+      <Link to={"/register"} className="buttonify">
+        Sign up for a free account
+      </Link>
+      <Link to={"/login"} className="buttonify">
+        Log in with existing account
+      </Link>
     </div>
   </section>
 )

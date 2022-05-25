@@ -51,6 +51,14 @@ form>* {
   width: 20%;
 }
 
+.buttonify {
+  background-color: #1877f2;
+  border-radius: .5rem;
+  color: whitesmoke;
+  padding: 1rem;
+  text-decoration: none;
+}
+
 .welcome-sign-log {
   display: flex;
   align-items: center;
