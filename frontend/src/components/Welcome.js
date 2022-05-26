@@ -5,7 +5,7 @@ const Welcome = () => (
   <section className="welcome">
     <h1>Welcome to Profilebook</h1>
     <h3>Some short description</h3>
-    <div className="welcome-sign-log">
+    <div>
       <Link to={"/register"} className="buttonify">
         Sign up for a free account
       </Link>
