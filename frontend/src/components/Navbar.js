@@ -9,10 +9,9 @@ const Navbar = () => {
   return(
     <nav>
       <section className='nav-header'>
-        <img src="https://www.pngarts.com/files/3/Letter-P-PNG-High-Quality-Image.png" className="logo" alt="logo" />
+        <img src="/images/letterP.png" className="logo" alt="logo" />
         <h1>Profilebook</h1>
       </section>
-      
 
       {context.loggedIn 
         ? 

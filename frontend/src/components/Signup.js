@@ -5,6 +5,7 @@ import { Navigate } from 'react-router-dom';
 
 const Signup = () => {
   const context = useContext(Context);
+  // const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -30,11 +31,14 @@ const Signup = () => {
         city: "",
         age: "",
       })
-      if(response.status === 201) {
-        return <Navigate to={"/login"} />
-      } else {
-        return <Navigate to={"/error"} />
-      }
+      context.setRegistration(true);
+    //   if(response.status === 201) {
+    //     context.setUser(response.name)
+    //     return <Navigate replace to={"/login"} />
+    //     // navigate("/login");
+    //   } else {
+    //     return <Navigate replace to={"/error"} />
+    //   }
     })
   }
 

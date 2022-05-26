@@ -1,3 +1,7 @@
+:root {
+  --main-color: #1877f2;
+}
+
 .App {
   text-align: center;
   font-family: 'Jost', sans-serif;
@@ -6,23 +10,6 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 .App-link {
@@ -52,7 +39,7 @@ form>* {
 }
 
 .buttonify {
-  background-color: #1877f2;
+  background-color: var(--main-color);
   border: none;
   border-radius: .5rem;
   color: whitesmoke;
@@ -60,7 +47,11 @@ form>* {
   text-decoration: none;
 }
 
-.welcome-sign-log {
+.welcome {
+  color: var(--main-color);
+}
+
+.welcome>div {
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -68,10 +59,4 @@ form>* {
   margin-left: auto;
   margin-right: auto;
   width: 40rem;
-  /* not working */
-  text-decoration: none;
-}
-
-.welcome {
-  color: #1877f2;
 }

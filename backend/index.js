@@ -11,11 +11,13 @@ require('dotenv').config()
 const connection = require('./conf');
 const express = require('express');
 const app = express();
+const cors = require('cors');
 // use the port from env file, if not available switch to port 5000 as default
 const port = process.env.PORT || 5000;
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(cors());
 
 // establish the connection to the MySQL db with credentials from config.js
 connection.connect((err) => {

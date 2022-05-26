@@ -4,7 +4,8 @@ export const Context = React.createContext();
 
 const Provider = (props) => {
   let [loggedIn, setLoggedIn] = useState(false);
-  let [userName, setUserName] = useState("");
+  let [registration, setRegistration] = useState(false);
+  let [user, setUser] = useState("");
   let [newUser, setNewUser] = useState({
     email: "",
     password: "",
@@ -24,8 +25,10 @@ const Provider = (props) => {
     <Context.Provider value={{
       loggedIn,
       setLoggedIn,
-      userName,
-      setUserName,
+      registration,
+      setRegistration,
+      user,
+      setUser,
       newUser,
       setNewUser,
       handleInfo
