@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Input from "./Input";
 import { Context } from "../context/Provider";
 import { Navigate } from 'react-router-dom';
@@ -7,30 +7,27 @@ const Signup = () => {
   const context = useContext(Context);
   // const navigate = useNavigate();
 
+  // useEffect(() => context.setRegistration(false), [])
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    // send registration data to backend
     fetch("http://localhost:5000/register", {
       method: "POST",
       headers: new Headers({
         "Content-Type": "application/json",
       }),
       body: JSON.stringify({
-        email: context.newUser.email,
-        password: context.newUser.password,
-        name: context.newUser.name,
-        city: context.newUser.city,
-        age: context.newUser.age
+        email: context.user.email,
+        password: context.user.password,
+        name: context.user.name,
+        city: context.user.city,
+        age: context.user.age
       }),
     })
+    // reset state for user to blank and redirect user to login page
     .then((response) => {
-      // reset the state for registration
-      context.setNewUser({
-        email: "",
-        password: "",
-        name: "",
-        city: "",
-        age: "",
-      })
+      context.setUser(context.emptyUser)
       context.setRegistration(true);
     //   if(response.status === 201) {
     //     context.setUser(response.name)
@@ -45,36 +42,41 @@ const Signup = () => {
   return(
     <form onSubmit={handleSubmit}>
       <Input 
-        inputType={"text"}
-        linked={context.newUser.email}
+        inputType="text"
+        linked={context.user.email}
         action={(event) => context.handleInfo(event, "email")}
-        display={"Your email..."} 
+        display="Your email..."
+        identity="Email"
         required 
       />
       <Input 
-        inputType={"password"} 
-        linked={context.newUser.password}
+        inputType="password" 
+        linked={context.user.password}
         action={(event) => context.handleInfo(event, "password")}
-        display={"Your password..."} 
+        display="Your password..." 
+        identity="Password"
         required 
       />
       <Input 
-        inputType={"text"} 
-        linked={context.newUser.name}
+        inputType="text"
+        linked={context.user.name}
         action={(event) => context.handleInfo(event, "name")}
-        display={"Your name..."} 
+        display="Your name..."
+        identity="Name"
       />
       <Input 
-        inputType={"text"} 
-        linked={context.newUser.city}
+        inputType="text"
+        linked={context.user.city}
         action={(event) => context.handleInfo(event, "city")}
-        display={"Your city..."} 
+        display="Your city..." 
+        identity="City"
       />
       <Input 
-        inputType={"number"}
-        linked={context.newUser.age}
+        inputType="number"
+        linked={context.user.age}
         action={(event) => context.handleInfo(event, "age")}
-        display={"Your age..."} 
+        display="Your age..."
+        identity="Age"
       />
       <button className="buttonify">Register</button>
     </form>

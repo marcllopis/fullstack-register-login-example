@@ -6,6 +6,11 @@ import './Navbar.css';
 const Navbar = () => {
   const context = useContext(Context);
 
+  const handleLogout = () => {
+    context.setUser(context.emptyUser)
+    context.setLoggedIn(false)
+  }
+
   return(
     <nav>
       <section className='nav-header'>
@@ -15,7 +20,7 @@ const Navbar = () => {
 
       {context.loggedIn 
         ? 
-          <Link to={"/"} action={() => context.setLoggedIn(false)}>
+          <Link to={"/"} onClick={handleLogout}>
             <h4>Logout</h4>
           </Link>
         :

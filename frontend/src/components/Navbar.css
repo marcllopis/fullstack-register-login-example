@@ -15,6 +15,7 @@ nav>section {
   justify-content: space-around;
 }
 
+nav>*,
 nav>section>* {
   color: whitesmoke;
   padding: 3rem;

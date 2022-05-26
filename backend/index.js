@@ -55,15 +55,19 @@ app.post("/register", (req, res) => {
 // path to LOGIN into the app
 app.post("/login", (req, res) => {
   connection.query(
-    `SELECT * FROM users WHERE email='${req.body.email}' AND password=${req.body.password}`, (err, results) => {
+    `SELECT * FROM users WHERE email='${req.body.email}' AND password='${req.body.password}'`, (err, results) => {
     if(err) {
       res.status(500).send("Internal server error");
       // SQL sends the results of a query in an array
     } else if(results.length === 0) {
       res.status(500).send("Sorry, there is no user with this email and password in the DB.");
     } else {
+      // send user data to frontend
       res.status(200).json({
         userId: results[0].id,
+        userName: results[0].name,
+        userAge: results[0].age,
+        userCity: results[0].city,
         message: "Successfully logged in!",
         token: "3q2tj3ghj320g23gj2mgh",
         loggedIn: true,

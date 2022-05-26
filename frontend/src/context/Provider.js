@@ -3,34 +3,37 @@ import React, { useState } from "react";
 export const Context = React.createContext();
 
 const Provider = (props) => {
-  let [loggedIn, setLoggedIn] = useState(false);
-  let [registration, setRegistration] = useState(false);
-  let [user, setUser] = useState("");
-  let [newUser, setNewUser] = useState({
+  // empty template for user data, used initial for state & to reset after sign up & logout
+  const emptyUser = {
     email: "",
     password: "",
     name: "",
     city: "",
     age: "",
-  })
+  }
 
+  // states for checking login status, new registration & user data for both sign up & profile
+  let [loggedIn, setLoggedIn] = useState(false);
+  let [registration, setRegistration] = useState(false);
+  let [user, setUser] = useState(emptyUser)
+
+  // set user data for either registration or login
   const handleInfo = (event, category) => {
-    setNewUser({
-      ...newUser,
+    setUser({
+      ...user,
       [category]: event.currentTarget.value,
     });
   }; 
 
   return (
     <Context.Provider value={{
+      emptyUser,
       loggedIn,
       setLoggedIn,
       registration,
       setRegistration,
       user,
       setUser,
-      newUser,
-      setNewUser,
       handleInfo
     }}>
       {props.children}
