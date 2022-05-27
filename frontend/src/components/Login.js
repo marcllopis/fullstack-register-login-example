@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import Input from "./Input";
 import { Context } from "../context/Provider";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const context = useContext(Context);
+  const navigate = useNavigate();
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -36,7 +37,6 @@ const Login = () => {
     //     return <Navigate to={"/error"} />
     //   }
     })
-    .then(context.setRegistration(false))
     .then(context.setLoggedIn(true))
     // .then(data.LoggedIn ? context.setLoggedIn(true) : <Navigate to={"/error"} />)
   }
@@ -61,7 +61,7 @@ const Login = () => {
       />
       <button className="buttonify">Log in</button>
     </form>
-  )
-}
+  );
+};
 
 export default Login;

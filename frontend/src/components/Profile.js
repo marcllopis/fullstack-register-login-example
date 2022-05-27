@@ -16,7 +16,7 @@ const Profile = () => {
       </div>
     </section>
     </>
-  )
+  );
 };
 
 export default Profile;

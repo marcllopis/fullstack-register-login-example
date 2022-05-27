@@ -34,7 +34,7 @@ const Navbar = () => {
           </section>
       }
     </nav>
-  )
+  );
 };
 
 export default Navbar;

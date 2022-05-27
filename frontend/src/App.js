@@ -17,7 +17,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Welcome />} />
-        <Route path="/register" element={ context.registration ? <Login /> : <Signup />} />
+        <Route path="/register" element={<Signup />} />
         <Route path="/login" element={context.loggedIn ? <Profile /> : <Login />} />
         <Route path="/profile" element={context.loggedIn ? <Profile /> : <Login />} />
         <Route path="/error" element={<Error />} />
@@ -25,6 +25,6 @@ function App() {
       </Routes>
     </div>
   );
-}
+};
 
 export default App;

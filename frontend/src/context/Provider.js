@@ -12,9 +12,8 @@ const Provider = (props) => {
     age: "",
   }
 
-  // states for checking login status, new registration & user data for both sign up & profile
+  // states for checking login status & storing user data for both sign up & profile
   let [loggedIn, setLoggedIn] = useState(false);
-  let [registration, setRegistration] = useState(false);
   let [user, setUser] = useState(emptyUser)
 
   // set user data for either registration or login
@@ -30,15 +29,13 @@ const Provider = (props) => {
       emptyUser,
       loggedIn,
       setLoggedIn,
-      registration,
-      setRegistration,
       user,
       setUser,
       handleInfo
     }}>
       {props.children}
     </Context.Provider>
-  )
+  );
 };
 
 export default Provider;

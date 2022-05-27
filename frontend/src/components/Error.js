@@ -7,6 +7,6 @@ const Error = () => (
       Return to the main page
     </Link>
   </>
-)
+);
 
 export default Error;

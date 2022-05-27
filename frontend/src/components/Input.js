@@ -9,5 +9,6 @@ const Input = (props) => (
       id={props.identity}
     />
   </>
-)
+);
+
 export default Input;

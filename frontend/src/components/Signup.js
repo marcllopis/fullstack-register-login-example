@@ -1,13 +1,11 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import Input from "./Input";
 import { Context } from "../context/Provider";
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
   const context = useContext(Context);
-  // const navigate = useNavigate();
-
-  // useEffect(() => context.setRegistration(false), [])
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -28,16 +26,14 @@ const Signup = () => {
     // reset state for user to blank and redirect user to login page
     .then((response) => {
       context.setUser(context.emptyUser)
-      context.setRegistration(true);
-    //   if(response.status === 201) {
-    //     context.setUser(response.name)
-    //     return <Navigate replace to={"/login"} />
-    //     // navigate("/login");
-    //   } else {
-    //     return <Navigate replace to={"/error"} />
-    //   }
-    })
-  }
+
+      if (response.status === 201) {
+        navigate("/login");
+      } else {
+        navigate("/error");
+      }
+    });
+  };
 
   return(
     <form onSubmit={handleSubmit}>
@@ -80,7 +76,7 @@ const Signup = () => {
       />
       <button className="buttonify">Register</button>
     </form>
-  )
-}
+  );
+};
 
 export default Signup;

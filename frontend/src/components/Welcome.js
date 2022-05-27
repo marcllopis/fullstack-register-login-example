@@ -14,6 +14,6 @@ const Welcome = () => (
       </Link>
     </div>
   </section>
-)
+);
 
 export default Welcome;
