@@ -6,7 +6,7 @@ import Navbar from './components/Navbar';
 import Profile from './components/Profile';
 import Signup from './components/Signup';
 import Welcome from './components/Welcome';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
 
 
@@ -18,10 +18,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Welcome />} />
         <Route path="/register" element={<Signup />} />
-        <Route path="/login" element={context.loggedIn ? <Profile /> : <Login />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/profile" element={context.loggedIn ? <Profile /> : <Login />} />
         <Route path="/error" element={<Error />} />
-        <Route path="/redirect" element={< Navigate to="/error" />} />
       </Routes>
     </div>
   );

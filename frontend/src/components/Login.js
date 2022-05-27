@@ -20,47 +20,56 @@ const Login = () => {
         password: context.user.password
       })
     })
-    // if user exists, response from backend provides their data
-    .then((response) => response.json())
-    .then((data) => {
-      let userData = {
-        email: context.user.email,
-        password: context.user.password,
-        name: data.userName,
-        city: data.userCity,
-        age: data.userAge
-      }
-      context.setUser(userData);
-    //   if(response.status === 200) {
-    //     return <Navigate to={"/profile"} />
-    //   } else {
-    //     return <Navigate to={"/error"} />
-    //   }
+    // check if user exists in database, otherwise redirect to error page
+    .then((response) => { 
+      // this check does not work with a ternary!
+      if (response.status === 500) {
+        context.setUser(context.emptyUser);
+        navigate("/error");
+      }  
+      return response.json()
     })
-    .then(context.setLoggedIn(true))
-    // .then(data.LoggedIn ? context.setLoggedIn(true) : <Navigate to={"/error"} />)
-  }
+    .then((data) => {
+        // if the user profile exists in the db, store user data from backend response
+        let userData = {
+          email: context.user.email,
+          password: context.user.password,
+          name: data.userName,
+          city: data.userCity,
+          age: data.userAge
+        };
+        // pass user data into state & activate state for loggedIn
+        context.setUser(userData);
+        context.setLoggedIn(true);
+        // redirect user to their profile
+        navigate("/profile");
+    });
+  };
 
+  // display form to login or redirect user to profile if already logged in
   return (
-    <form onSubmit={handleLogin}>
-      <Input 
-        inputType="text"
-        linked={context.user.email}
-        action={(event) => context.handleInfo(event, "email")}
-        display="Your email..."
-        identity="Email"
-        required 
-      />
-      <Input
-        inputType="password"
-        linked={context.user.password}
-        action={(event) => context.handleInfo(event, "password")}
-        display="Your password..." 
-        identity="Password"
-        required 
-      />
-      <button className="buttonify">Log in</button>
-    </form>
+    // context.loggedIn 
+    //   ? navigate("/profile") 
+    //   :
+        <form onSubmit={handleLogin}>
+          <Input 
+            inputType="text"
+            linked={context.user.email}
+            action={(event) => context.handleInfo(event, "email")}
+            display="Your email..."
+            identity="Email"
+            required 
+          />
+          <Input
+            inputType="password"
+            linked={context.user.password}
+            action={(event) => context.handleInfo(event, "password")}
+            display="Your password..." 
+            identity="Password"
+            required 
+          />
+          <button className="buttonify">Log in</button>
+        </form>
   );
 };
 

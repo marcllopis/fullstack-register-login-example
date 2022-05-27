@@ -17,7 +17,7 @@ const Navbar = () => {
         <img src="/images/letterP.png" className="logo" alt="logo" />
         <h1>Profilebook</h1>
       </section>
-
+      {/* depending if user is logged in, show different buttons on the nav bar */}
       {context.loggedIn 
         ? 
           <Link to={"/"} onClick={handleLogout}>
