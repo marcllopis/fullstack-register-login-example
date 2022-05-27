@@ -38,6 +38,7 @@ const Login = () => {
     })
     .then(context.setRegistration(false))
     .then(context.setLoggedIn(true))
+    // .then(data.LoggedIn ? context.setLoggedIn(true) : <Navigate to={"/error"} />)
   }
 
   return (
