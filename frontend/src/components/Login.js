@@ -48,28 +48,31 @@ const Login = () => {
 
   // display form to login or redirect user to profile if already logged in
   return (
-    // context.loggedIn 
-    //   ? navigate("/profile") 
-    //   :
-        <form onSubmit={handleLogin}>
-          <Input 
-            inputType="text"
-            linked={context.user.email}
-            action={(event) => context.handleInfo(event, "email")}
-            display="Your email..."
-            identity="Email"
-            required 
-          />
-          <Input
-            inputType="password"
-            linked={context.user.password}
-            action={(event) => context.handleInfo(event, "password")}
-            display="Your password..." 
-            identity="Password"
-            required 
-          />
-          <button className="buttonify">Log in</button>
-        </form>
+    // <>
+    //   {context.loggedIn 
+    //     ? navigate("/profile") 
+    //     :
+          <form onSubmit={handleLogin}>
+            <Input 
+              inputType="text"
+              linked={context.user.email}
+              action={(event) => context.handleInfo(event, "email")}
+              display="Your email..."
+              identity="Email"
+              required 
+            />
+            <Input
+              inputType="password"
+              linked={context.user.password}
+              action={(event) => context.handleInfo(event, "password")}
+              display="Your password..." 
+              identity="Password"
+              required 
+            />
+            <button className="buttonify">Log in</button>
+          </form>
+    //   }
+    // </>
   );
 };
 

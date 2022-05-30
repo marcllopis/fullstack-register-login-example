@@ -37,49 +37,46 @@ const Signup = () => {
 
    // display form to register or redirect user to profile if already logged in
   return(
-    // context.loggedIn 
-    //   ? navigate("profile")
-    //   :
-        <form onSubmit={handleSubmit}>
-          <Input 
-            inputType="text"
-            linked={context.user.email}
-            action={(event) => context.handleInfo(event, "email")}
-            display="Your email..."
-            identity="Email"
-            required 
-          />
-          <Input 
-            inputType="password" 
-            linked={context.user.password}
-            action={(event) => context.handleInfo(event, "password")}
-            display="Your password..." 
-            identity="Password"
-            required 
-          />
-          <Input 
-            inputType="text"
-            linked={context.user.name}
-            action={(event) => context.handleInfo(event, "name")}
-            display="Your name..."
-            identity="Name"
-          />
-          <Input 
-            inputType="text"
-            linked={context.user.city}
-            action={(event) => context.handleInfo(event, "city")}
-            display="Your city..." 
-            identity="City"
-          />
-          <Input 
-            inputType="number"
-            linked={context.user.age}
-            action={(event) => context.handleInfo(event, "age")}
-            display="Your age..."
-            identity="Age"
-          />
-          <button className="buttonify">Register</button>
-        </form>
+    <form onSubmit={handleSubmit}>
+      <Input 
+        inputType="text"
+        linked={context.user.email}
+        action={(event) => context.handleInfo(event, "email")}
+        display="Your email..."
+        identity="Email"
+        required 
+      />
+      <Input 
+        inputType="password" 
+        linked={context.user.password}
+        action={(event) => context.handleInfo(event, "password")}
+        display="Your password..." 
+        identity="Password"
+        required 
+      />
+      <Input 
+        inputType="text"
+        linked={context.user.name}
+        action={(event) => context.handleInfo(event, "name")}
+        display="Your name..."
+        identity="Name"
+      />
+      <Input 
+        inputType="text"
+        linked={context.user.city}
+        action={(event) => context.handleInfo(event, "city")}
+        display="Your city..." 
+        identity="City"
+      />
+      <Input 
+        inputType="number"
+        linked={context.user.age}
+        action={(event) => context.handleInfo(event, "age")}
+        display="Your age..."
+        identity="Age"
+      />
+      <button className="buttonify">Register</button>
+    </form>
   );
 };
 
