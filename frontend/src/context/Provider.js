@@ -10,11 +10,11 @@ const Provider = (props) => {
     name: "",
     city: "",
     age: "",
-  }
+  };
 
   // states for checking login status & storing user data for both sign up & profile
   let [loggedIn, setLoggedIn] = useState(false);
-  let [user, setUser] = useState(emptyUser)
+  let [user, setUser] = useState(emptyUser);
 
   // set user data for either registration or login
   const handleInfo = (event, category) => {
@@ -22,17 +22,19 @@ const Provider = (props) => {
       ...user,
       [category]: event.currentTarget.value,
     });
-  }; 
+  };
 
   return (
-    <Context.Provider value={{
-      emptyUser,
-      loggedIn,
-      setLoggedIn,
-      user,
-      setUser,
-      handleInfo
-    }}>
+    <Context.Provider
+      value={{
+        emptyUser,
+        loggedIn,
+        setLoggedIn,
+        user,
+        setUser,
+        handleInfo,
+      }}
+    >
       {props.children}
     </Context.Provider>
   );

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Input from "./Input";
 import { Context } from "../context/Provider";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const context = useContext(Context);
@@ -20,12 +20,11 @@ const Signup = () => {
         password: context.user.password,
         name: context.user.name,
         city: context.user.city,
-        age: context.user.age
+        age: context.user.age,
       }),
-    })
-    .then((response) => {
+    }).then((response) => {
       // reset state user to blank, so user data from db can be stored in it after login
-      context.setUser(context.emptyUser)
+      context.setUser(context.emptyUser);
       // redirect user to login page or to error page if something went wrong
       if (response.status === 201) {
         navigate("/login");
@@ -35,40 +34,40 @@ const Signup = () => {
     });
   };
 
-   // display form to register or redirect user to profile if already logged in
-  return(
+  // display form to register or redirect user to profile if already logged in
+  return (
     <form onSubmit={handleSubmit}>
-      <Input 
+      <Input
         inputType="text"
         linked={context.user.email}
         action={(event) => context.handleInfo(event, "email")}
         display="Your email..."
         identity="Email"
-        required 
+        required
       />
-      <Input 
-        inputType="password" 
+      <Input
+        inputType="password"
         linked={context.user.password}
         action={(event) => context.handleInfo(event, "password")}
-        display="Your password..." 
+        display="Your password..."
         identity="Password"
-        required 
+        required
       />
-      <Input 
+      <Input
         inputType="text"
         linked={context.user.name}
         action={(event) => context.handleInfo(event, "name")}
         display="Your name..."
         identity="Name"
       />
-      <Input 
+      <Input
         inputType="text"
         linked={context.user.city}
         action={(event) => context.handleInfo(event, "city")}
-        display="Your city..." 
+        display="Your city..."
         identity="City"
       />
-      <Input 
+      <Input
         inputType="number"
         linked={context.user.age}
         action={(event) => context.handleInfo(event, "age")}
